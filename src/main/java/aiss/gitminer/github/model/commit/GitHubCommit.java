@@ -5,57 +5,39 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.annotation.Generated;
+import java.util.UUID;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("jsonschema2pojo")
 public class GitHubCommit {
 
-    @JsonProperty("url")
+    @JsonProperty("html_url")
     private String url;
 
-    @JsonProperty("author")
-    private CommitUser author;
+    @JsonProperty("commit")
+    private GitHubCommitDetails details;
 
-    @JsonProperty("committer")
-    private CommitUser committer;
-
-    @JsonProperty("message")
-    private String message;
-
-    @JsonProperty("url")
-    public String getUrl() {
-        return url;
+    @JsonProperty("commit")
+    public GitHubCommitDetails getDetails() {
+        return details;
     }
 
-    @JsonProperty("url")
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    @JsonProperty("message")
-    public String getMessage() {
-        return message;
-    }
-
-    @JsonProperty("message")
-    public void setMessage(String message) {
-        this.message = message;
+    @JsonProperty("commit")
+    public void setDetails(GitHubCommitDetails details) {
+        this.details = details;
     }
 
     public Commit toCommit() {
-        return new Commit(null, this.message, this.message,
-                this.author.getName(), this.author.getEmail(), this.author.getDate(),
-                this.committer.getName(), this.committer.getEmail(), this.committer.getDate(),
+        return new Commit(UUID.randomUUID().toString(), this.details.getMessage(), this.details.getMessage(),
+                this.details.getAuthor().getName(), this.details.getAuthor().getEmail(), this.details.getAuthor().getDate(),
+                this.details.getCommitter().getName(), this.details.getCommitter().getEmail(), this.details.getCommitter().getDate(),
                 this.url);
     }
 
     @Override
     public String toString() {
-        return "GitHubCommit{" +
-               "url='" + url + '\'' +
-               ", author=" + author +
-               ", committer=" + committer +
-               ", message='" + message + '\'' +
+        return "GitHubCommitWrapper{" +
+               "commit=" + details +
                '}';
     }
 }
