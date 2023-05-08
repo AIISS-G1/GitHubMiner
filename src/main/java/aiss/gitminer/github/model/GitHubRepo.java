@@ -7,7 +7,7 @@ import javax.annotation.Generated;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("jsonschema2pojo")
-public class GitHubRepository {
+public class GitHubRepo {
 
     @JsonProperty("id")
     private Integer id;
@@ -54,7 +54,7 @@ public class GitHubRepository {
 
     @Override
     public String toString() {
-        return "GitHubRepository{" +
+        return "GitHubRepo{" +
                "id=" + id +
                ", name='" + name + '\'' +
                ", htmlUrl='" + htmlUrl + '\'' +
