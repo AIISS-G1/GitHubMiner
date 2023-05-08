@@ -1,12 +1,16 @@
 package aiss.gitminer.github.model.issue;
 
 import aiss.gitminer.github.model.GitHubUser;
+import aiss.gitminer.model.Comment;
 import aiss.gitminer.model.Issue;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.annotation.Generated;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("jsonschema2pojo")
@@ -47,6 +51,9 @@ public class GitHubIssue {
 
     @JsonProperty("html_url")
     private String htmlUrl;
+
+    @JsonIgnore
+    private List<Comment> comments;
 
     @JsonProperty("id")
     public Integer getId() {
@@ -133,6 +140,11 @@ public class GitHubIssue {
         return assignee;
     }
 
+    @JsonIgnore
+    public Optional<GitHubUser> getAsigneeOptional() {
+        return Optional.ofNullable(this.getAssignee());
+    }
+
     @JsonProperty("assignee")
     public void setAssignee(GitHubUser assignee) {
         this.assignee = assignee;
@@ -168,10 +180,19 @@ public class GitHubIssue {
         this.updatedAt = updatedAt;
     }
 
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
     public Issue toIssue() {
-        return new Issue(null, this.id.toString(), this.title, this.body, this.state, this.createdAt, this.updatedAt,
+        return new Issue(UUID.randomUUID().toString(), this.id.toString(), this.title, this.body, this.state, this.createdAt, this.updatedAt,
                 this.closedAt, this.labels.stream().map(IssueLabel::getName).toList(), this.user.toUser(),
-                this.assignee.toUser(), null, null, this.htmlUrl, null);
+                this.getAsigneeOptional().map(GitHubUser::toUser).orElse(null),
+                null, null, this.htmlUrl, this.comments);
     }
 
     @Override
