@@ -15,6 +15,9 @@ public class GitHubIssue {
     @JsonProperty("id")
     private Integer id;
 
+    @JsonProperty("number")
+    private Integer number;
+
     @JsonProperty("title")
     private String title;
 
@@ -53,6 +56,16 @@ public class GitHubIssue {
     @JsonProperty("id")
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    @JsonProperty("number")
+    public Integer getNumber() {
+        return number;
+    }
+
+    @JsonProperty("number")
+    public void setNumber(Integer number) {
+        this.number = number;
     }
 
     @JsonProperty("html_url")
