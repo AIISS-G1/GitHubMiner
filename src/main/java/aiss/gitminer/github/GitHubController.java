@@ -1,5 +1,6 @@
 package aiss.gitminer.github;
 
+import aiss.gitminer.exception.AuthenticationException;
 import aiss.gitminer.github.service.ProjectService;
 import aiss.gitminer.model.Project;
 import aiss.gitminer.service.GitMinerService;
@@ -26,7 +27,8 @@ public class GitHubController {
                        @RequestParam(defaultValue = "2") int maxPages) {
         String token = Optional.ofNullable(authorization)
                 .map(s -> s.replace("Bearer ", ""))
-                .orElse(null);
+                .orElseThrow(() -> new AuthenticationException(HttpStatus.UNAUTHORIZED));
+
         return this.projectService.findById(owner, repo, sinceCommits, sinceIssues, maxPages, token);
     }
 
