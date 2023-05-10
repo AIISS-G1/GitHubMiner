@@ -29,6 +29,14 @@ public class GitHubRepo {
     @JsonIgnore
     private List<Issue> issues;
 
+    public GitHubRepo(Integer id, String name, String htmlUrl, List<Commit> commits, List<Issue> issues) {
+        this.id = id;
+        this.name = name;
+        this.htmlUrl = htmlUrl;
+        this.commits = commits;
+        this.issues = issues;
+    }
+
     @JsonProperty("id")
     public Integer getId() {
         return id;

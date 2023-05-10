@@ -23,6 +23,13 @@ public class GitHubComment {
     @JsonProperty("updated_at")
     private String updatedAt;
 
+    public GitHubComment(String body, GitHubUser user, String createdAt, String updatedAt) {
+        this.body = body;
+        this.user = user;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
     @JsonProperty("body")
     public String getBody() {
         return body;

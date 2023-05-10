@@ -12,6 +12,10 @@ public class IssueLabel {
     @JsonProperty("name")
     private String name;
 
+    public IssueLabel(String name) {
+        this.name = name;
+    }
+
     @JsonProperty("name")
     public String getName() {
         return name;

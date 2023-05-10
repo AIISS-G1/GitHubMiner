@@ -22,6 +22,13 @@ public class GitHubUser {
     @JsonProperty("html_url")
     private String htmlUrl;
 
+    public GitHubUser(Integer id, String login, String avatarUrl, String htmlUrl) {
+        this.id = id;
+        this.login = login;
+        this.avatarUrl = avatarUrl;
+        this.htmlUrl = htmlUrl;
+    }
+
     @JsonProperty("login")
     public String getLogin() {
         return login;

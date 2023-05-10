@@ -18,6 +18,12 @@ public class CommitUser {
     @JsonProperty("date")
     private String date;
 
+    public CommitUser(String name, String email, String date) {
+        this.name = name;
+        this.email = email;
+        this.date = date;
+    }
+
     @JsonProperty("name")
     public String getName() {
         return name;

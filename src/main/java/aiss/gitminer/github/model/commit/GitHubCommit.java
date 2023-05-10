@@ -17,6 +17,21 @@ public class GitHubCommit {
     @JsonProperty("commit")
     private GitHubCommitDetails details;
 
+    public GitHubCommit(String url, GitHubCommitDetails details) {
+        this.url = url;
+        this.details = details;
+    }
+
+    @JsonProperty("html_url")
+    public String getUrl() {
+        return url;
+    }
+
+    @JsonProperty("html_url")
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     @JsonProperty("commit")
     public GitHubCommitDetails getDetails() {
         return details;
