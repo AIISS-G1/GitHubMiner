@@ -2,7 +2,6 @@ package aiss.gitminer.github.repository;
 
 import aiss.gitminer.authentication.AuthenticationRestTemplate;
 import aiss.gitminer.github.model.commit.GitHubCommit;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -18,7 +17,11 @@ import static aiss.gitminer.github.GitHubMinerApplication.BASE_DIR;
 @Repository
 public class GitHubCommitRepository {
 
-    @Autowired private AuthenticationRestTemplate restTemplate;
+    private final AuthenticationRestTemplate restTemplate;
+
+    public GitHubCommitRepository(AuthenticationRestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     public List<GitHubCommit> fetchProjectCommits(String owner, String repo, int page, LocalDate since, String token) {
         String url = UriComponentsBuilder.fromUriString(BASE_DIR + "/" + owner + "/" + repo + "/commits")

@@ -2,7 +2,6 @@ package aiss.gitminer.github.repository;
 
 import aiss.gitminer.authentication.AuthenticationRestTemplate;
 import aiss.gitminer.github.model.GitHubComment;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -15,7 +14,11 @@ import static aiss.gitminer.github.GitHubMinerApplication.BASE_DIR;
 @Repository
 public class GitHubCommentRepository {
 
-    @Autowired private AuthenticationRestTemplate restTemplate;
+    private final AuthenticationRestTemplate restTemplate;
+
+    public GitHubCommentRepository(AuthenticationRestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     public List<GitHubComment> fetchIssueComments(String owner, String repo, int issueNumber, int page, String token) {
         String url = UriComponentsBuilder.fromUriString(BASE_DIR + "/" + owner + "/" + repo + "/issues/" + issueNumber + "/comments")

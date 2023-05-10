@@ -4,7 +4,6 @@ import aiss.gitminer.exception.AuthenticationException;
 import aiss.gitminer.github.service.ProjectService;
 import aiss.gitminer.model.Project;
 import aiss.gitminer.service.GitMinerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +13,13 @@ import java.util.Optional;
 @RestController
 public class GitHubController {
 
-    @Autowired private GitMinerService gitMinerService;
-    @Autowired private ProjectService projectService;
+    private final GitMinerService gitMinerService;
+    private final ProjectService projectService;
+
+    public GitHubController(GitMinerService gitMinerService, ProjectService projectService) {
+        this.gitMinerService = gitMinerService;
+        this.projectService = projectService;
+    }
 
     @GetMapping("/{owner}/{repo}")
     @ResponseStatus(HttpStatus.OK)

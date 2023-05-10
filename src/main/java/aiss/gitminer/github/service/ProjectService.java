@@ -3,16 +3,21 @@ package aiss.gitminer.github.service;
 import aiss.gitminer.github.model.GitHubRepo;
 import aiss.gitminer.github.repository.GitHubRepoRepository;
 import aiss.gitminer.model.Project;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ProjectService {
 
-    @Autowired private GitHubRepoRepository repoRepository;
+    private final GitHubRepoRepository repoRepository;
 
-    @Autowired private CommitService commitService;
-    @Autowired private IssueService issueService;
+    private final CommitService commitService;
+    private final IssueService issueService;
+
+    public ProjectService(GitHubRepoRepository repoRepository, CommitService commitService, IssueService issueService) {
+        this.repoRepository = repoRepository;
+        this.commitService = commitService;
+        this.issueService = issueService;
+    }
 
     public Project findById(String owner, String repoName, int sinceCommits, int sinceIssues, int maxPages, String token) {
         GitHubRepo repo = this.repoRepository.findById(owner, repoName, token);

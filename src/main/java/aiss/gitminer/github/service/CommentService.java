@@ -4,7 +4,6 @@ import aiss.gitminer.github.model.GitHubComment;
 import aiss.gitminer.github.repository.GitHubCommentRepository;
 import aiss.gitminer.model.Comment;
 import aiss.gitminer.pagination.RestPaginationHelper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,7 +11,11 @@ import java.util.List;
 @Service
 public class CommentService {
 
-    @Autowired private GitHubCommentRepository commentRepository;
+    private final GitHubCommentRepository commentRepository;
+
+    public CommentService(GitHubCommentRepository commentRepository) {
+        this.commentRepository = commentRepository;
+    }
 
     public List<Comment> fetchIssueComments(String owner, String repo, int issueNumber, int maxPages, String token) {
         return RestPaginationHelper.unwrap(

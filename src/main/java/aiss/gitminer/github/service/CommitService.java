@@ -4,7 +4,6 @@ import aiss.gitminer.github.model.commit.GitHubCommit;
 import aiss.gitminer.github.repository.GitHubCommitRepository;
 import aiss.gitminer.model.Commit;
 import aiss.gitminer.pagination.RestPaginationHelper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -14,7 +13,11 @@ import java.util.List;
 @Service
 public class CommitService {
 
-    @Autowired private GitHubCommitRepository commitRepository;
+    private final GitHubCommitRepository commitRepository;
+
+    public CommitService(GitHubCommitRepository commitRepository) {
+        this.commitRepository = commitRepository;
+    }
 
     public List<Commit> fetchProjectCommits(String owner, String repo, int maxPages, int since, String token) {
         return RestPaginationHelper.unwrap(
