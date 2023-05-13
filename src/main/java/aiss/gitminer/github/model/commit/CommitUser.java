@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.annotation.Generated;
+import java.time.Instant;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("jsonschema2pojo")
@@ -16,9 +17,13 @@ public class CommitUser {
     private String email;
 
     @JsonProperty("date")
-    private String date;
+    private Instant date;
 
-    public CommitUser(String name, String email, String date) {
+    public CommitUser() {
+        // Constructor for Jackson
+    }
+
+    public CommitUser(String name, String email, Instant date) {
         this.name = name;
         this.email = email;
         this.date = date;
@@ -45,12 +50,12 @@ public class CommitUser {
     }
 
     @JsonProperty("date")
-    public String getDate() {
+    public Instant getDate() {
         return date;
     }
 
     @JsonProperty("date")
-    public void setDate(String date) {
+    public void setDate(Instant date) {
         this.date = date;
     }
 
