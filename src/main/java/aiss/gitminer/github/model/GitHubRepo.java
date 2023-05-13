@@ -29,6 +29,10 @@ public class GitHubRepo {
     @JsonIgnore
     private List<Issue> issues;
 
+    public GitHubRepo() {
+        // Constructor for Jackson
+    }
+
     public GitHubRepo(Integer id, String name, String htmlUrl, List<Commit> commits, List<Issue> issues) {
         this.id = id;
         this.name = name;

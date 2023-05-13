@@ -17,6 +17,10 @@ public class GitHubCommit {
     @JsonProperty("commit")
     private GitHubCommitDetails details;
 
+    public GitHubCommit() {
+        // Constructor for Jackson
+    }
+
     public GitHubCommit(String url, GitHubCommitDetails details) {
         this.url = url;
         this.details = details;

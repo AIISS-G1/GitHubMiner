@@ -22,6 +22,10 @@ public class GitHubUser {
     @JsonProperty("html_url")
     private String htmlUrl;
 
+    public GitHubUser() {
+        // Constructor for Jackson
+    }
+
     public GitHubUser(Integer id, String login, String avatarUrl, String htmlUrl) {
         this.id = id;
         this.login = login;

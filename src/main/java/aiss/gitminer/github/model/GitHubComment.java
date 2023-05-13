@@ -23,6 +23,10 @@ public class GitHubComment {
     @JsonProperty("updated_at")
     private String updatedAt;
 
+    public GitHubComment() {
+        // Constructor for Jackson
+    }
+
     public GitHubComment(String body, GitHubUser user, String createdAt, String updatedAt) {
         this.body = body;
         this.user = user;

@@ -55,6 +55,10 @@ public class GitHubIssue {
     @JsonIgnore
     private List<Comment> comments;
 
+    public GitHubIssue() {
+        // Constructor for Jackson
+    }
+
     public GitHubIssue(Integer id, Integer number, String title, String body, String state, String closedAt,
                        String createdAt, String updatedAt, List<IssueLabel> labels, GitHubUser user,
                        GitHubUser assignee, String htmlUrl, List<Comment> comments) {

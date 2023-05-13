@@ -18,6 +18,10 @@ public class GitHubCommitDetails {
     @JsonProperty("message")
     private String message;
 
+    public GitHubCommitDetails() {
+        // Constructor for Jackson
+    }
+
     public GitHubCommitDetails(CommitUser author, CommitUser committer, String message) {
         this.author = author;
         this.committer = committer;
