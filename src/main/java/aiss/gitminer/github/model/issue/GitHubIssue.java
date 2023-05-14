@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.annotation.Generated;
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -32,13 +33,13 @@ public class GitHubIssue {
     private String state;
 
     @JsonProperty("closed_at")
-    private String closedAt;
+    private Instant closedAt;
 
     @JsonProperty("created_at")
-    private String createdAt;
+    private Instant createdAt;
 
     @JsonProperty("updated_at")
-    private String updatedAt;
+    private Instant updatedAt;
 
     @JsonProperty("labels")
     private List<IssueLabel> labels;
@@ -59,8 +60,8 @@ public class GitHubIssue {
         // Constructor for Jackson
     }
 
-    public GitHubIssue(Integer id, Integer number, String title, String body, String state, String closedAt,
-                       String createdAt, String updatedAt, List<IssueLabel> labels, GitHubUser user,
+    public GitHubIssue(Integer id, Integer number, String title, String body, String state, Instant closedAt,
+                       Instant createdAt, Instant updatedAt, List<IssueLabel> labels, GitHubUser user,
                        GitHubUser assignee, String htmlUrl, List<Comment> comments) {
         this.id = id;
         this.number = number;
@@ -173,32 +174,32 @@ public class GitHubIssue {
     }
 
     @JsonProperty("closed_at")
-    public String getClosedAt() {
+    public Instant getClosedAt() {
         return closedAt;
     }
 
     @JsonProperty("closed_at")
-    public void setClosedAt(String closedAt) {
+    public void setClosedAt(Instant closedAt) {
         this.closedAt = closedAt;
     }
 
     @JsonProperty("created_at")
-    public String getCreatedAt() {
+    public Instant getCreatedAt() {
         return createdAt;
     }
 
     @JsonProperty("created_at")
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
     }
 
     @JsonProperty("updated_at")
-    public String getUpdatedAt() {
+    public Instant getUpdatedAt() {
         return updatedAt;
     }
 
     @JsonProperty("updated_at")
-    public void setUpdatedAt(String updatedAt) {
+    public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
     }
 
