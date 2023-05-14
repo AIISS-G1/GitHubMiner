@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.annotation.Generated;
+import java.time.Instant;
 import java.util.UUID;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -18,16 +19,16 @@ public class GitHubComment {
     private GitHubUser user;
 
     @JsonProperty("created_at")
-    private String createdAt;
+    private Instant createdAt;
 
     @JsonProperty("updated_at")
-    private String updatedAt;
+    private Instant updatedAt;
 
     public GitHubComment() {
         // Constructor for Jackson
     }
 
-    public GitHubComment(String body, GitHubUser user, String createdAt, String updatedAt) {
+    public GitHubComment(String body, GitHubUser user, Instant createdAt, Instant updatedAt) {
         this.body = body;
         this.user = user;
         this.createdAt = createdAt;
@@ -55,22 +56,22 @@ public class GitHubComment {
     }
 
     @JsonProperty("created_at")
-    public String getCreatedAt() {
+    public Instant getCreatedAt() {
         return createdAt;
     }
 
     @JsonProperty("created_at")
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
     }
 
     @JsonProperty("updated_at")
-    public String getUpdatedAt() {
+    public Instant getUpdatedAt() {
         return updatedAt;
     }
 
     @JsonProperty("updated_at")
-    public void setUpdatedAt(String updatedAt) {
+    public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
     }
 
