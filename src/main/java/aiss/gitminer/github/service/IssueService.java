@@ -28,7 +28,7 @@ public class IssueService {
         );
 
         return issues.stream()
-                .peek(issue -> issue.setComments(this.commentService.fetchIssueComments(owner, repo, issue.getNumber(), 1, token)))
+                .peek(issue -> issue.setComments(this.commentService.fetchIssueComments(owner, repo, issue.getNumber(), maxPages, token)))
                 .map(GitHubIssue::toIssue)
                 .toList();
     }
